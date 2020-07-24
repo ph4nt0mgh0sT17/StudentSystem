@@ -12,7 +12,7 @@ namespace StudentSystem.ConsoleApplication
         public static class ErrorMessages
         {
             /// <summary>
-            /// Text when the selected option
+            /// Text when the selected option is selected wrong. There is wrong number or wrong text...
             /// </summary>
             public const string WrongSelectedOptionFromConsoleMenu = "Sorry, you have selected wrong option.";
         }
@@ -31,7 +31,10 @@ namespace StudentSystem.ConsoleApplication
 
         public static class Messages
         {
+            public const string ApplicationStarted = "The Student System application has started";
             public const string IntroductionMessage = "Welcome to the Student system application.";
+            public const string AskForSelectionMenu = "Select an option (1 - 4): ";
+            public const string RetrievingStudents = "Retrieving students...";
         }
 
     }

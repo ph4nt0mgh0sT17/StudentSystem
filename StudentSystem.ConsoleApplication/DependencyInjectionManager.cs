@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Autofac;
+using log4net;
 using StudentSystem.DataServiceLayer;
 
 namespace StudentSystem.ConsoleApplication
@@ -27,6 +28,7 @@ namespace StudentSystem.ConsoleApplication
         {
             ContainerBuilder containerBuilder = new ContainerBuilder();
             containerBuilder.RegisterType<StudentSystemContext>();
+            containerBuilder.RegisterType<Logger>();
             Container = containerBuilder.Build();
         }
 
@@ -34,5 +36,10 @@ namespace StudentSystem.ConsoleApplication
         /// The <see cref="StudentSystemContext"/> that is needed throughout whole application. Used for database connection and for <see cref="IUnitOfWork"/>
         /// </summary>
         public static StudentSystemContext StudentSystemContext => Container.Resolve<StudentSystemContext>();
+
+        /// <summary>
+        /// The <see cref="Logger"/> used for logging different types of messages into log files.
+        /// </summary>
+        public static Logger Logger => Container.Resolve<Logger>();
     }
 }
