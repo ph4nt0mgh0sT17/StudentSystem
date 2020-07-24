@@ -10,6 +10,8 @@ If you want to test/try the application or add some features feel free to do so 
 
 All you need to do is you have to install the MySQL server on your workstation (MySQL 8.0).
 
+IMPORTANT: Your database has to have access through port 3306 with following credentials: username=root, password=root
+
 Then you need to run SQL scripts that will initiate the database and fill the tables with some data.
 This script is found in the folder DB_Scripts.
 
