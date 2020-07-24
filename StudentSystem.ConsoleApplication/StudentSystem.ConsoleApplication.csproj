@@ -5,4 +5,8 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\StudentSystem.DataServiceLayer\StudentSystem.DataServiceLayer.csproj" />
+  </ItemGroup>
+
 </Project>
