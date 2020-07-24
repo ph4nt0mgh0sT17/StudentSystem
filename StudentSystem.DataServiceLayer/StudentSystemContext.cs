@@ -1,6 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
-using StudentSystem.DataServiceLayer.Entities;
+using StudentSystem.DataServiceLayer;
 
 namespace StudentSystem.DataServiceLayer
 {

@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using StudentSystem.DataServiceLayer.Entities;
-using StudentSystem.DataServiceLayer.Repositories.Interfaces;
+using StudentSystem.DataServiceLayer;
 
-namespace StudentSystem.DataServiceLayer.Repositories
+namespace StudentSystem.DataServiceLayer
 {
     public class StudentRepository : BaseRepository<StudentEntity>, IStudentRepository
     {
@@ -31,12 +30,6 @@ namespace StudentSystem.DataServiceLayer.Repositories
         /// <summary>
         /// The main database context for this repository.
         /// </summary>
-        private StudentSystemContext StudentSystemContext
-        {
-            get
-            {
-                return mContext as StudentSystemContext;
-            }
-        }
+        private StudentSystemContext StudentSystemContext => mContext as StudentSystemContext;
     }
 }

@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using StudentSystem.DataServiceLayer.Entities;
 
-namespace StudentSystem.DataServiceLayer.Repositories.Interfaces
+namespace StudentSystem.DataServiceLayer
 {
 
     /// <summary>

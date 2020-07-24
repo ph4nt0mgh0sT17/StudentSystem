@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
-namespace StudentSystem.DataServiceLayer.Entities
+namespace StudentSystem.DataServiceLayer
 {
     /// <summary>
     /// The entity that represents the student table in the database.
@@ -42,7 +42,7 @@ namespace StudentSystem.DataServiceLayer.Entities
         }
 
         [Column("BIRTH_DATE")]
-        public DateTime? BirthDate
+        public DateTime BirthDate
         {
             get;
             set;

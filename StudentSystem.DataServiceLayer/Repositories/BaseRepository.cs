@@ -5,9 +5,9 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using StudentSystem.DataServiceLayer.Repositories.Interfaces;
+using StudentSystem.DataServiceLayer;
 
-namespace StudentSystem.DataServiceLayer.Repositories
+namespace StudentSystem.DataServiceLayer
 {
     /// <summary>
     /// The base repository for the database.
@@ -22,12 +22,12 @@ namespace StudentSystem.DataServiceLayer.Repositories
             this.mContext = context;
         }
 
-        public TEntity Get(int id)
+        public TEntity GetById(int id)
         {
             return mContext.Set<TEntity>().Find(id);
         }
 
-        public async Task<TEntity> GetAsync(int id)
+        public async Task<TEntity> GetByIdAsync(int id)
         {
             return await mContext.Set<TEntity>().FindAsync(id);
         }
@@ -80,6 +80,27 @@ namespace StudentSystem.DataServiceLayer.Repositories
         public async Task AddRangeAsync(IEnumerable<TEntity> entities)
         {
             await mContext.Set<TEntity>().AddRangeAsync(entities);
+        }
+
+        /// <summary>
+        /// Updates the <see cref="TEntity"/> in the database.
+        /// </summary>
+        /// <param name="entity">The entity itself as updated version.</param>
+        public void Update(TEntity entity)
+        {
+            mContext.Update(entity);
+        }
+
+        /// <summary>
+        /// Updates the <see cref="TEntity"/> in the database asynchronously.
+        /// </summary>
+        /// <param name="entity">The entity itself as updated version.</param>
+        public async Task UpdateAsync(TEntity entity)
+        {
+            await Task.Run(() =>
+            { 
+                mContext.Update(entity);
+            });
         }
 
         public void Remove(TEntity entity)

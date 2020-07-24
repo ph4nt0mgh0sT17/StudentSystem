@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StudentSystem.DataServiceLayer.Repositories.Interfaces
+namespace StudentSystem.DataServiceLayer
 {
     /// <summary>
     /// The unit of work that facades together all repositories to work with them.

@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using StudentSystem.DataServiceLayer.Repositories.Interfaces;
+using StudentSystem.DataServiceLayer;
 
-namespace StudentSystem.DataServiceLayer.Repositories
+namespace StudentSystem.DataServiceLayer
 {
-    public class UnitOfWork : IUnitOfWork
+    public class UnitOfWork : IUnitOfWork, IDisposable
     {
         private readonly StudentSystemContext mContext;
 
