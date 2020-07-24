@@ -10,12 +10,14 @@ using StudentSystem.DataServiceLayer;
 using Autofac;
 using log4net;
 using log4net.Config;
+using Microsoft.EntityFrameworkCore.Migrations.Operations;
 
 namespace StudentSystem.ConsoleApplication
 {
     internal class Program
     {
         private static Logger logger;
+        private static StudentSystemContext studentSystemContext;
         /// <summary>
         /// The main entry of the console application.
         /// </summary>
@@ -37,6 +39,7 @@ namespace StudentSystem.ConsoleApplication
         private static void InitializeMemberFields()
         {
             logger = DependencyInjectionManager.Logger;
+            studentSystemContext = DependencyInjectionManager.StudentSystemContext;
         }
 
         private static void PrintMenu()
@@ -47,6 +50,9 @@ namespace StudentSystem.ConsoleApplication
             Console.WriteLine("\t4. - Update a student\n");
         }
 
+        /// <summary>
+        /// Asks user to select the option from menu...
+        /// </summary>
         private static void ChooseOptionFromMenu()
         {
             Console.Write(Constants.Messages.AskForSelectionMenu);
@@ -76,7 +82,7 @@ namespace StudentSystem.ConsoleApplication
                     break;
 
                 case Constants.MenuOptions.AddStudent:
-                    // TODO: Add a student...
+                    AddStudent();
                     break;
 
                 case Constants.MenuOptions.RemoveStudent:
@@ -105,6 +111,37 @@ namespace StudentSystem.ConsoleApplication
 
             // Need to put an empty line to indent...
             Console.WriteLine();
+        }
+
+        private static void AddStudent()
+        {
+            Console.WriteLine("Adding new user:");
+
+            Console.Write("\tUsername: ");
+            string username = Console.ReadLine();
+
+            Console.Write("\tFirst name: ");
+            string firstName = Console.ReadLine();
+
+            Console.Write("\tLast name: ");
+            string lastName = Console.ReadLine();
+
+            Console.Write("\tBirth date: ");
+            string birthDateText = Console.ReadLine();
+
+            StudentEntity student = new StudentEntity()
+            {
+                Username = username,
+                FirstName = firstName,
+                LastName = lastName,
+                BirthDate = DateTime.Parse(birthDateText)
+            };
+
+            IUnitOfWork unitOfWork = new UnitOfWork(studentSystemContext);
+            unitOfWork.Students.Add(student);
+            unitOfWork.Complete();
+
+            Console.WriteLine("User created.");
         }
     }
 }
