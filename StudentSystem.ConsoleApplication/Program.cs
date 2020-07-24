@@ -21,13 +21,13 @@ namespace StudentSystem.ConsoleApplication
 
             UnitOfWork unitOfWork = new UnitOfWork(studentSystemContext);
 
+            Console.WriteLine("Getting all students...");
             List<StudentEntity> students = unitOfWork.Students.GetAll().ToList();
 
             students.ForEach(student =>
             {
-                Console.WriteLine($"Student: {student.Id}; username: {student.Username}");
+                Console.WriteLine($"Student: {student.Id}; Username: {student.Username}; First name: {student.FirstName}; Last name: {student.LastName}; Age: {student.BirthDate.Value.GetAge()}");
             });
-
         }
     }
 }
