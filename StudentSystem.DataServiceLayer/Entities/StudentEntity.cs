@@ -10,10 +10,10 @@ namespace StudentSystem.DataServiceLayer
     /// <summary>
     /// The entity that represents the student table in the database.
     /// </summary>
-    [Table("STUDENT")]
+    [Table(Constants.TableNames.StudentTable)]
     public class StudentEntity
     {
-        [Column("PK_STUDENT_ID")]
+        [Column(Constants.ColumnNames.StudentTable.Id)]
         [Key]
         public int Id
         {
@@ -21,28 +21,28 @@ namespace StudentSystem.DataServiceLayer
             set;
         }
 
-        [Column("USER_NAME")]
+        [Column(Constants.ColumnNames.StudentTable.Username)]
         public string Username
         {
             get;
             set;
         }
 
-        [Column("FIRST_NAME")]
+        [Column(Constants.ColumnNames.StudentTable.FirstName)]
         public string FirstName
         {
             get;
             set;
         }
 
-        [Column("LAST_NAME")]
+        [Column(Constants.ColumnNames.StudentTable.LastName)]
         public string LastName
         {
             get;
             set;
         }
 
-        [Column("BIRTH_DATE")]
+        [Column(Constants.ColumnNames.StudentTable.BirthDate)]
         public DateTime BirthDate
         {
             get;
@@ -50,7 +50,7 @@ namespace StudentSystem.DataServiceLayer
         }
 
         [ForeignKey("StudentAddress")]
-        [Column("FK_STUDENT_ADDRESS_ID")]
+        [Column(Constants.ColumnNames.StudentTable.StudentAddressId)]
         public int StudentAddressId
         {
             get;
@@ -66,7 +66,7 @@ namespace StudentSystem.DataServiceLayer
         public override string ToString()
         {
             return
-                $"Student ID: {Id}; Username: {Username}; Full name: {FirstName} {LastName}; Birth date: {BirthDate.ToString()}; Address: {StudentAddress}";
+                $"Student ID: {Id}; Username: {Username}; Full name: {FirstName} {LastName}; Birth date: {BirthDate:d};\n\tAddress: {StudentAddress}\n";
         }
     }
 }

@@ -54,13 +54,13 @@ namespace StudentSystem.DataServiceLayer
         /// Retrieves a single entity by the given predicate logic.
         /// </summary>
         /// <param name="predicateExpression">The predicate expression that tells what entities will be retrieved.</param>
-        TEntity SingleOrDefault(Expression<Func<TEntity, bool>> predicateExpression);
+        TEntity FirstOrDefault(Expression<Func<TEntity, bool>> predicateExpression);
 
         /// <summary>
         /// Retrieves a single entity by the given predicate logic asynchronously.
         /// </summary>
         /// <param name="predicateExpression">The predicate expression that tells what entities will be retrieved.</param>
-        Task<TEntity> SingleOrDefaultAsync(Expression<Func<TEntity, bool>> predicateExpression);
+        Task<TEntity> FirstOrDefaultAsync(Expression<Func<TEntity, bool>> predicateExpression);
 
         /// <summary>
         /// Adds the <see cref="TEntity"/> into the repository.

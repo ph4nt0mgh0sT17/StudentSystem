@@ -6,10 +6,13 @@ using System.Text;
 
 namespace StudentSystem.DataServiceLayer.Entities
 {
-    [Table("STUDENT_ADDRESS")]
+    /// <summary>
+    /// Entity that represents the StudentAddress table from the database.
+    /// </summary>
+    [Table(Constants.TableNames.StudentAddressTable)]
     public class StudentAddressEntity
     {
-        [Column("PK_STUDENT_ADDRESS_ID")]
+        [Column(Constants.ColumnNames.StudentAddressTable.Id)]
         [Key]
         public int Id
         {
@@ -17,42 +20,42 @@ namespace StudentSystem.DataServiceLayer.Entities
             set;
         }
 
-        [Column("ADDRESS_1")]
+        [Column(Constants.ColumnNames.StudentAddressTable.Address1)]
         public string Address1
         {
             get;
             set;
         }
 
-        [Column("ADDRESS_2")]
+        [Column(Constants.ColumnNames.StudentAddressTable.Address2)]
         public string Address2
         {
             get;
             set;
         }
 
-        [Column("CITY")]
+        [Column(Constants.ColumnNames.StudentAddressTable.City)]
         public string City
         {
             get;
             set;
         }
 
-        [Column("REGION")]
+        [Column(Constants.ColumnNames.StudentAddressTable.Region)]
         public string Region
         {
             get;
             set;
         }
 
-        [Column("COUNTRY")]
+        [Column(Constants.ColumnNames.StudentAddressTable.Country)]
         public string Country
         {
             get;
             set;
         }
 
-        [Column("POSTAL_CODE")]
+        [Column(Constants.ColumnNames.StudentAddressTable.PostalCode)]
         public string PostalCode
         {
             get;

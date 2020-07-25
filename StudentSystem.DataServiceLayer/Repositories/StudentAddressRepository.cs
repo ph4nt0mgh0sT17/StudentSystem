@@ -13,6 +13,14 @@ namespace StudentSystem.DataServiceLayer
         }
 
         /// <summary>
+        /// Overrides the <see cref="BaseRepository{TEntity}"/> <seealso cref="BaseRepository{TEntity}.GetAll"/> method to include students...
+        /// </summary>
+        public override IQueryable<StudentAddressEntity> GetAll()
+        {
+            return base.GetAll().IncludeStudents();
+        }
+
+        /// <summary>
         /// Retrieves all student addresses from the database sorted by the city element.
         /// </summary>
         public IEnumerable<StudentAddressEntity> GetStudentAddressesByCity()

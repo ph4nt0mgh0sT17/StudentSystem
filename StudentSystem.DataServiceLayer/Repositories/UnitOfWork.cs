@@ -59,7 +59,14 @@ namespace StudentSystem.DataServiceLayer
             mContext.Dispose();
         }
 
+        /// <summary>
+        /// Student repository for database communication.
+        /// </summary>
         public IStudentRepository Students { get; private set; }
+
+        /// <summary>
+        /// Student address repository for database communication.
+        /// </summary>
         public IStudentAddressRepository StudentAddresses { get; private set; }
     }
 }

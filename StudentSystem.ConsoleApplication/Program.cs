@@ -11,13 +11,15 @@ using Autofac;
 using log4net;
 using log4net.Config;
 using Microsoft.EntityFrameworkCore.Migrations.Operations;
+using StudentSystem.DataServiceLayer.Entities;
 
 namespace StudentSystem.ConsoleApplication
 {
     internal class Program
     {
-        private static Logger logger;
-        private static StudentSystemContext studentSystemContext;
+        private static Logger mLogger;
+        private static StudentSystemContext mStudentSystemContext;
+
         /// <summary>
         /// The main entry of the console application.
         /// </summary>
@@ -32,14 +34,12 @@ namespace StudentSystem.ConsoleApplication
                 PrintMenu();
                 ChooseOptionFromMenu();
             }
-
-
         }
 
         private static void InitializeMemberFields()
         {
-            logger = DependencyInjectionManager.Logger;
-            studentSystemContext = DependencyInjectionManager.StudentSystemContext;
+            mLogger = DependencyInjectionManager.Logger;
+            mStudentSystemContext = DependencyInjectionManager.StudentSystemContext;
         }
 
         private static void PrintMenu()
@@ -56,8 +56,7 @@ namespace StudentSystem.ConsoleApplication
         private static void ChooseOptionFromMenu()
         {
             Console.Write(Constants.Messages.AskForSelectionMenu);
-            int selectedOption = 0;
-            int.TryParse(Console.ReadKey().KeyChar.ToString(), out selectedOption);
+            int.TryParse(Console.ReadKey().KeyChar.ToString(), out int selectedOption);
 
             Console.WriteLine("\n");
 
@@ -101,13 +100,10 @@ namespace StudentSystem.ConsoleApplication
         private static void PrintAllStudents()
         {
             Console.WriteLine(Constants.Messages.RetrievingStudents + "\n");
-            IUnitOfWork unitOfWork = new UnitOfWork(DependencyInjectionManager.StudentSystemContext);
+            IUnitOfWork unitOfWork = new UnitOfWork(mStudentSystemContext);
 
-            List<StudentEntity> students = unitOfWork.Students.GetAll().ToList();
-            students.ForEach(student =>
-            {
-                Console.WriteLine(student.ToString());
-            });
+            List<StudentEntity> students = unitOfWork.Students.GetStudentsByUsername().ToList();
+            students.ForEach(student => Console.WriteLine(student.ToString()));
 
             // Need to put an empty line to indent...
             Console.WriteLine();
@@ -137,7 +133,7 @@ namespace StudentSystem.ConsoleApplication
                 BirthDate = DateTime.Parse(birthDateText)
             };
 
-            IUnitOfWork unitOfWork = new UnitOfWork(studentSystemContext);
+            IUnitOfWork unitOfWork = new UnitOfWork(mStudentSystemContext);
             unitOfWork.Students.Add(student);
             unitOfWork.Complete();
 

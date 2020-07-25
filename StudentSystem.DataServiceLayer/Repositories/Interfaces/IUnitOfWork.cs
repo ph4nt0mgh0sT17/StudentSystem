@@ -16,6 +16,11 @@ namespace StudentSystem.DataServiceLayer
         IStudentRepository Students { get; }
 
         /// <summary>
+        /// The student address repository.
+        /// </summary>
+        IStudentAddressRepository StudentAddresses { get; }
+
+        /// <summary>
         /// Saves the changes.
         /// </summary>
         /// <returns>Determination if saving changes were done successfully.</returns>

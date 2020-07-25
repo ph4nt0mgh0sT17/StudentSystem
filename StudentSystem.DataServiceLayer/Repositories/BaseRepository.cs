@@ -52,14 +52,14 @@ namespace StudentSystem.DataServiceLayer
             return await Task.Run(() => mContext.Set<TEntity>().Where(predicateExpression));
         }
 
-        public TEntity SingleOrDefault(Expression<Func<TEntity, bool>> predicateExpression)
+        public TEntity FirstOrDefault(Expression<Func<TEntity, bool>> predicateExpression)
         {
-            return mContext.Set<TEntity>().SingleOrDefault(predicateExpression);
+            return mContext.Set<TEntity>().FirstOrDefault(predicateExpression);
         }
 
-        public async Task<TEntity> SingleOrDefaultAsync(Expression<Func<TEntity, bool>> predicateExpression)
+        public async Task<TEntity> FirstOrDefaultAsync(Expression<Func<TEntity, bool>> predicateExpression)
         {
-            return await mContext.Set<TEntity>().SingleOrDefaultAsync(predicateExpression);
+            return await mContext.Set<TEntity>().FirstOrDefaultAsync(predicateExpression);
         }
 
         public void Add(TEntity entity)
