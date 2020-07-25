@@ -125,12 +125,44 @@ namespace StudentSystem.ConsoleApplication
             Console.Write("\tBirth date: ");
             string birthDateText = Console.ReadLine();
 
+            Console.Write("\tAddress 1: ");
+            string address1 = Console.ReadLine();
+
+            Console.Write("\tAddress 2: ");
+            string address2 = Console.ReadLine();
+
+            if (address2.Length == 0)
+            {
+                address2 = null;
+            }
+
+            Console.Write("\tCity: ");
+            string city = Console.ReadLine();
+
+            Console.Write("\tRegion: ");
+            string region = Console.ReadLine();
+
+            Console.Write("\tCountry: ");
+            string country = Console.ReadLine();
+
+            Console.Write("\tPostal code: ");
+            string postalCode = Console.ReadLine();
+
             StudentEntity student = new StudentEntity()
             {
                 Username = username,
                 FirstName = firstName,
                 LastName = lastName,
-                BirthDate = DateTime.Parse(birthDateText)
+                BirthDate = DateTime.Parse(birthDateText),
+                StudentAddress = new StudentAddressEntity()
+                {
+                    Address1 = address1,
+                    Address2 = address2,
+                    City = city,
+                    Region = region,
+                    Country = country,
+                    PostalCode = postalCode
+                }
             };
 
             IUnitOfWork unitOfWork = new UnitOfWork(mStudentSystemContext);
