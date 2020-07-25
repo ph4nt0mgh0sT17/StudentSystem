@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Config>
+  <DatabaseConnection>server=localhost;port=3306;database=student_system;user=root;password=root</DatabaseConnection>
+</Config>
+

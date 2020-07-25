@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Xml;
+using System.Xml.Serialization;
 using Microsoft.EntityFrameworkCore;
 using StudentSystem.DataServiceLayer;
 using Autofac;
@@ -25,7 +27,7 @@ namespace StudentSystem.ConsoleApplication
         /// </summary>
         private static void Main()
         {
-            DependencyInjectionManager.BuildContainer();
+            DependencyInjectionProvider.BuildContainer();
             InitializeMemberFields();
 
             Console.WriteLine(Constants.Messages.IntroductionMessage);
@@ -38,8 +40,8 @@ namespace StudentSystem.ConsoleApplication
 
         private static void InitializeMemberFields()
         {
-            mLogger = DependencyInjectionManager.Logger;
-            mStudentSystemContext = DependencyInjectionManager.StudentSystemContext;
+            mLogger = DependencyInjectionProvider.Logger;
+            mStudentSystemContext = DependencyInjectionProvider.StudentSystemContext;
         }
 
         private static void PrintMenu()
@@ -109,6 +111,9 @@ namespace StudentSystem.ConsoleApplication
             Console.WriteLine();
         }
 
+        /// <summary>
+        /// Adds student to the database.
+        /// </summary>
         private static void AddStudent()
         {
             Console.WriteLine("Adding new user:");

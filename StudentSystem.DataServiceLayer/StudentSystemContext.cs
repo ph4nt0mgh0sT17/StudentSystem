@@ -7,17 +7,34 @@ namespace StudentSystem.DataServiceLayer
 {
     public class StudentSystemContext : DbContext
     {
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        /// <summary>
+        /// Basic constructor that constructs the <seealso cref="StudentSystemContext"/> without the connection.
+        /// </summary>
+        public StudentSystemContext() : base()
         {
-            optionsBuilder.UseMySQL("server=localhost;port=3306;database=student_system;user=root;password=root");
         }
 
+        /// <summary>
+        /// Constructs the <seealso cref="StudentSystemContext"/> with options.
+        /// </summary>
+        /// <param name="options">The options of the database.</param>
+        public StudentSystemContext(DbContextOptions options) : base(options)
+        {
+
+        }
+
+        /// <summary>
+        /// The <seealso cref="DbSet{TEntity}"/> of Students table in the database.
+        /// </summary>
         public DbSet<StudentEntity> Students
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// The <seealso cref="DbSet{}"/> of Student Addresses table in the database.
+        /// </summary>
         public DbSet<StudentAddressEntity> StudentAddresses
         {
             get;

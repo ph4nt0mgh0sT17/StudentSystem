@@ -29,6 +29,9 @@ namespace StudentSystem.ConsoleApplication
             public const int UpdateStudent = 4;
         }
 
+        /// <summary>
+        /// The class that contains all const string messages displayed in the console application.
+        /// </summary>
         public static class Messages
         {
             public const string ApplicationStarted = "The Student System application has started";
