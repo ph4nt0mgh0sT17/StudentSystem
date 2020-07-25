@@ -118,63 +118,85 @@ namespace StudentSystem.ConsoleApplication
         {
             Console.WriteLine("Adding new user:");
 
-            Console.Write("\tUsername: ");
-            string username = Console.ReadLine();
+            CreateStudentDto createStudentDto = AskForCreateStudent();
+            StudentEntity student = BuildStudentEntityFromCreateStudentDto(createStudentDto);
 
-            Console.Write("\tFirst name: ");
-            string firstName = Console.ReadLine();
-
-            Console.Write("\tLast name: ");
-            string lastName = Console.ReadLine();
-
-            Console.Write("\tBirth date: ");
-            string birthDateText = Console.ReadLine();
-
-            Console.Write("\tAddress 1: ");
-            string address1 = Console.ReadLine();
-
-            Console.Write("\tAddress 2: ");
-            string address2 = Console.ReadLine();
-
-            if (address2.Length == 0)
+            using(IUnitOfWork unitOfWork = new UnitOfWork(mStudentSystemContext))
             {
-                address2 = null;
+                unitOfWork.Students.Add(student);
+                unitOfWork.Complete();
             }
 
-            Console.Write("\tCity: ");
-            string city = Console.ReadLine();
+            Console.WriteLine(Constants.Messages.StudentCreatedSuccessfully + "\n");
+        }
 
-            Console.Write("\tRegion: ");
-            string region = Console.ReadLine();
+        /// <summary>
+        /// Asks user to create the student and builds the <seealso cref="CreateStudentDto"/>.
+        /// </summary>
+        private static CreateStudentDto AskForCreateStudent()
+        {
+            string username = AskForInput("\tUsername: ");
+            string firstName = AskForInput("\tFirst name: ");
+            string lastName = AskForInput("\tLast name: ");
+            string birthDateText = AskForInput("\tBirth date (yyyy-mm-dd): ");
+            string address1 = AskForInput("\tAddress 1: ");
+            string address2 = AskForInput("\tAddress 2: ");
+            string city = AskForInput("\tCity: ");
+            string region = AskForInput("\tRegion: ");
+            string country = AskForInput("\tCountry: ");
+            string postalCode = AskForInput("\tPostal code: ");
 
-            Console.Write("\tCountry: ");
-            string country = Console.ReadLine();
-
-            Console.Write("\tPostal code: ");
-            string postalCode = Console.ReadLine();
-
-            StudentEntity student = new StudentEntity()
+            return new CreateStudentDto()
             {
                 Username = username,
-                FirstName = firstName,
+                FirstName =  firstName,
                 LastName = lastName,
                 BirthDate = DateTime.Parse(birthDateText),
+                Address1 =  address1,
+                Address2 = address2,
+                City = city,
+                Region = region,
+                Country = country,
+                PostalCode = postalCode
+            };
+        }
+
+        /// <summary>
+        /// Asks user for the input in the console. If input is empty then null is returned.
+        /// </summary>
+        /// <returns>The input written by the user.</returns>
+        private static string AskForInput(string askMessage)
+        {
+            Console.Write(askMessage);
+            return Console.ReadLine().IfEmptyThenNull();
+        }
+
+        /// <summary>
+        /// Builds the <seealso cref="StudentEntity"/> from the <seealso cref="CreateStudentDto"/>
+        /// </summary>
+        /// <param name="createStudentDto"></param>
+        /// <returns></returns>
+        private static StudentEntity BuildStudentEntityFromCreateStudentDto(CreateStudentDto createStudentDto)
+        {
+            return new StudentEntity()
+            {
+                Username = createStudentDto.Username,
+                FirstName = createStudentDto.FirstName,
+                LastName = createStudentDto.LastName,
+                BirthDate = createStudentDto.BirthDate,
                 StudentAddress = new StudentAddressEntity()
                 {
-                    Address1 = address1,
-                    Address2 = address2,
-                    City = city,
-                    Region = region,
-                    Country = country,
-                    PostalCode = postalCode
+                    Address1 = createStudentDto.Address1,
+                    Address2 = createStudentDto.Address2,
+                    City = createStudentDto.City,
+                    Region = createStudentDto.Region,
+                    Country = createStudentDto.Country,
+                    PostalCode = createStudentDto.PostalCode
                 }
             };
-
-            IUnitOfWork unitOfWork = new UnitOfWork(mStudentSystemContext);
-            unitOfWork.Students.Add(student);
-            unitOfWork.Complete();
-
-            Console.WriteLine("User created.");
         }
+
+
+
     }
 }

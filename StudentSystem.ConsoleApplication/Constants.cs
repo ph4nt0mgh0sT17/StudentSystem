@@ -38,6 +38,7 @@ namespace StudentSystem.ConsoleApplication
             public const string IntroductionMessage = "Welcome to the Student system application.";
             public const string AskForSelectionMenu = "Select an option (1 - 4): ";
             public const string RetrievingStudents = "Retrieving students...";
+            public const string StudentCreatedSuccessfully = "Student has been created successfully.";
         }
 
     }
