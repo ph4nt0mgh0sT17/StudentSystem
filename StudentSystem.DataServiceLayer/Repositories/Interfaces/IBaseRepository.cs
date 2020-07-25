@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,26 +29,26 @@ namespace StudentSystem.DataServiceLayer
         Task<TEntity> GetByIdAsync(int id);
 
         /// <summary>
-        /// Retrieves the <see cref="IEnumerable{TEntity}"/> of the <see cref="TEntity"/> class.
+        /// Retrieves the <see cref="IQueryable{TEntity}"/> of the <see cref="TEntity"/> class.
         /// </summary>
-        IEnumerable<TEntity> GetAll();
+        IQueryable<TEntity> GetAll();
 
         /// <summary>
-        /// Retrieves the <see cref="IEnumerable{TEntity}"/> of the <see cref="TEntity"/> class asynchronously.
+        /// Retrieves the <see cref="IQueryable{TEntity}"/> of the <see cref="TEntity"/> class asynchronously.
         /// </summary>
-        Task<IEnumerable<TEntity>> GetAllAsync();
+        Task<IQueryable<TEntity>> GetAllAsync();
 
         /// <summary>
-        /// Retrieves the <see cref="IEnumerable{TEntity}"/> of the <see cref="TEntity"/> class by the given predicate logic.
+        /// Retrieves the <see cref="IQueryable{TEntity}"/> of the <see cref="TEntity"/> class by the given predicate logic.
         /// </summary>
         /// <param name="predicateExpression">The predicate expression that tells what entities will be retrieved.</param>
-        IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicateExpression);
+        IQueryable<TEntity> Find(Expression<Func<TEntity, bool>> predicateExpression);
 
         /// <summary>
-        /// Retrieves the <see cref="IEnumerable{TEntity}"/> of the <see cref="TEntity"/> class by the given predicate logic asynchronously.
+        /// Retrieves the <see cref="IQueryable{TEntity}"/> of the <see cref="TEntity"/> class by the given predicate logic asynchronously.
         /// </summary>
         /// <param name="predicateExpression">The predicate expression that tells what entities will be retrieved.</param>
-        Task<IEnumerable<TEntity>> FindAsync(Expression<Func<TEntity, bool>> predicateExpression);
+        Task<IQueryable<TEntity>> FindAsync(Expression<Func<TEntity, bool>> predicateExpression);
 
         /// <summary>
         /// Retrieves a single entity by the given predicate logic.

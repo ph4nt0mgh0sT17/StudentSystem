@@ -14,17 +14,38 @@ namespace StudentSystem.DataServiceLayer
         {
         }
 
+        /// <summary>
+        /// Retrieves all student entities from the database.
+        /// </summary>
+        public override IQueryable<StudentEntity> GetAll()
+        {
+            // Includes the student address
+            return base.GetAll().IncludeStudentAddress();
+        }
+
+        /// <summary>
+        /// Gets all asynchronously
+        /// </summary>
+        /// <returns></returns>
+        public override async Task<IQueryable<StudentEntity>> GetAllAsync()
+        {
+            return await Task.Run(() => base.GetAllAsync().Result.IncludeStudentAddress());
+        }
+
+        /// <summary>
+        /// Retrieves all students from the database ordered by its username.
+        /// </summary>
         public IEnumerable<StudentEntity> GetStudentsByUsername()
         {
             return GetAll().OrderBy(student => student.Username);
         }
 
+        /// <summary>
+        /// Gets all students from the database ordered by its username asynchronously.
+        /// </summary>
         public async Task<IEnumerable<StudentEntity>> GetStudentsByUsernameAsync()
         {
-            return await Task.Run(() =>
-            {
-                return GetAllAsync().Result.OrderBy(student => student.Username);
-            });
+            return await Task.Run(() => GetAllAsync().Result.OrderBy(student => student.Username));
         }
 
         /// <summary>

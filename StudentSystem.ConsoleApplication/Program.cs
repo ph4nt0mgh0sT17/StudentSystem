@@ -103,10 +103,10 @@ namespace StudentSystem.ConsoleApplication
             Console.WriteLine(Constants.Messages.RetrievingStudents + "\n");
             IUnitOfWork unitOfWork = new UnitOfWork(DependencyInjectionManager.StudentSystemContext);
 
-            List<StudentEntity> students = unitOfWork.Students.GetStudentsByUsername().ToList();
+            List<StudentEntity> students = unitOfWork.Students.GetAll().ToList();
             students.ForEach(student =>
             {
-                Console.WriteLine($"Student ID: {student.Id}; Username: {student.Username}; Full name: {student.FirstName} {student.LastName}; Age: {student.BirthDate.GetAge()}");
+                Console.WriteLine(student.ToString());
             });
 
             // Need to put an empty line to indent...

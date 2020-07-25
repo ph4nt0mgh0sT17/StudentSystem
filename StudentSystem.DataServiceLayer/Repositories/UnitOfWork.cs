@@ -30,6 +30,7 @@ namespace StudentSystem.DataServiceLayer
         private void InitializeAppRepositories()
         {
             Students = new StudentRepository(mContext);
+            StudentAddresses = new StudentAddressRepository(mContext);
         }
 
         /// <summary>
@@ -59,5 +60,6 @@ namespace StudentSystem.DataServiceLayer
         }
 
         public IStudentRepository Students { get; private set; }
+        public IStudentAddressRepository StudentAddresses { get; private set; }
     }
 }

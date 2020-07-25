@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
+using StudentSystem.DataServiceLayer.Entities;
 
 namespace StudentSystem.DataServiceLayer
 {
@@ -46,6 +47,26 @@ namespace StudentSystem.DataServiceLayer
         {
             get;
             set;
+        }
+
+        [ForeignKey("StudentAddress")]
+        [Column("FK_STUDENT_ADDRESS_ID")]
+        public int StudentAddressId
+        {
+            get;
+            set;
+        }
+
+        public StudentAddressEntity StudentAddress
+        {
+            get;
+            set;
+        }
+
+        public override string ToString()
+        {
+            return
+                $"Student ID: {Id}; Username: {Username}; Full name: {FirstName} {LastName}; Birth date: {BirthDate.ToString()}; Address: {StudentAddress}";
         }
     }
 }

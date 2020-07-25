@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using StudentSystem.DataServiceLayer;
+using StudentSystem.DataServiceLayer.Entities;
 
 namespace StudentSystem.DataServiceLayer
 {
@@ -12,6 +13,12 @@ namespace StudentSystem.DataServiceLayer
         }
 
         public DbSet<StudentEntity> Students
+        {
+            get;
+            set;
+        }
+
+        public DbSet<StudentAddressEntity> StudentAddresses
         {
             get;
             set;

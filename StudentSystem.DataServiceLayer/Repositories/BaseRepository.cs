@@ -32,24 +32,24 @@ namespace StudentSystem.DataServiceLayer
             return await mContext.Set<TEntity>().FindAsync(id);
         }
 
-        public IEnumerable<TEntity> GetAll()
+        public virtual IQueryable<TEntity> GetAll()
         {
-            return mContext.Set<TEntity>().ToList();
+            return mContext.Set<TEntity>();
         }
 
-        public async Task<IEnumerable<TEntity>> GetAllAsync()
+        public virtual async Task<IQueryable<TEntity>> GetAllAsync()
         {
-            return await mContext.Set<TEntity>().ToListAsync();
+            return await Task.Run(() => mContext.Set<TEntity>());
         }
 
-        public IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicateExpression)
+        public IQueryable<TEntity> Find(Expression<Func<TEntity, bool>> predicateExpression)
         {
             return mContext.Set<TEntity>().Where(predicateExpression);
         }
 
-        public async Task<IEnumerable<TEntity>> FindAsync(Expression<Func<TEntity, bool>> predicateExpression)
+        public async Task<IQueryable<TEntity>> FindAsync(Expression<Func<TEntity, bool>> predicateExpression)
         {
-            return await mContext.Set<TEntity>().Where(predicateExpression).ToListAsync();
+            return await Task.Run(() => mContext.Set<TEntity>().Where(predicateExpression));
         }
 
         public TEntity SingleOrDefault(Expression<Func<TEntity, bool>> predicateExpression)
