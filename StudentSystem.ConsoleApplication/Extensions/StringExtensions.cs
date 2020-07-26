@@ -18,6 +18,10 @@ namespace StudentSystem.ConsoleApplication
             return text.IsEmpty() ? null : text;
         }
 
+        /// <summary>
+        /// Checks the string is empty. Checks the length of the string is equal to 0.
+        /// </summary>
+        /// <param name="text">The text that is being checked.</param>
         public static bool IsEmpty(this string text)
         {
             return text.Length == 0;

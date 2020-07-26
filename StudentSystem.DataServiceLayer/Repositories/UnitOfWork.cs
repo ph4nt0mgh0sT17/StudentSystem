@@ -6,7 +6,7 @@ using StudentSystem.DataServiceLayer;
 
 namespace StudentSystem.DataServiceLayer
 {
-    public class UnitOfWork : IUnitOfWork, IDisposable
+    public class UnitOfWork : IUnitOfWork
     {
         private readonly StudentSystemContext mContext;
 
@@ -49,14 +49,6 @@ namespace StudentSystem.DataServiceLayer
         public async Task<int> CompleteAsync()
         {
             return await mContext.SaveChangesAsync();
-        }
-
-        /// <summary>
-        /// Action that releases the unit of work from memory.
-        /// </summary>
-        public void Dispose()
-        {
-            mContext.Dispose();
         }
 
         /// <summary>

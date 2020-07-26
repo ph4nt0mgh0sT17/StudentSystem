@@ -8,7 +8,7 @@ namespace StudentSystem.DataServiceLayer
     /// <summary>
     /// The unit of work that facades together all repositories to work with them.
     /// </summary>
-    public interface IUnitOfWork : IDisposable
+    public interface IUnitOfWork
     {
         /// <summary>
         /// The student repository.

@@ -8,7 +8,7 @@ using log4net.Config;
 
 namespace StudentSystem.ConsoleApplication
 {
-    internal class Logger
+    internal class Logger : ILogger
     {
         /// <summary>
         /// The log4.net logger that is used in this class as main object.

@@ -13,13 +13,15 @@ using Autofac;
 using log4net;
 using log4net.Config;
 using Microsoft.EntityFrameworkCore.Migrations.Operations;
+using Microsoft.Extensions.DependencyInjection;
+using StudentSystem.Core;
 using StudentSystem.DataServiceLayer.Entities;
 
 namespace StudentSystem.ConsoleApplication
 {
     internal class Program
     {
-        private static Logger mLogger;
+        private static ILogger mLogger;
         private static StudentSystemContext mStudentSystemContext;
 
         /// <summary>
@@ -27,7 +29,7 @@ namespace StudentSystem.ConsoleApplication
         /// </summary>
         private static void Main()
         {
-            DependencyInjectionProvider.BuildContainer();
+            DependencyInjectionProvider.BuildProvider();
             InitializeMemberFields();
 
             Console.WriteLine(Constants.Messages.IntroductionMessage);
@@ -121,11 +123,10 @@ namespace StudentSystem.ConsoleApplication
             CreateStudentDto createStudentDto = AskForCreateStudent();
             StudentEntity student = BuildStudentEntityFromCreateStudentDto(createStudentDto);
 
-            using(IUnitOfWork unitOfWork = new UnitOfWork(mStudentSystemContext))
-            {
-                unitOfWork.Students.Add(student);
-                unitOfWork.Complete();
-            }
+            IUnitOfWork unitOfWork = new UnitOfWork(mStudentSystemContext);
+            unitOfWork.Students.Add(student);
+            unitOfWork.Complete();
+            
 
             Console.WriteLine(Constants.Messages.StudentCreatedSuccessfully + "\n");
         }

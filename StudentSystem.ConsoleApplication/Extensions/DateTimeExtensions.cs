@@ -14,11 +14,10 @@ namespace StudentSystem.ConsoleApplication
         {
             var today = DateTime.Today;
 
+            // Calculate age by extracting today's year from birthdate's year
             var age = today.Year - birthDate.Year;
 
-            if (birthDate > today.AddYears(-age)) age--;
-
-            return age;
+            return (birthDate > today.AddYears(-age)) ? --age : age;
         }
     }
 }

@@ -9,7 +9,7 @@ namespace StudentSystem.ConsoleApplication
     /// This class object is just representation of the XML configuration 'config.xml' to be able deserialize or serialize if needed.
     /// </summary>
     [XmlRoot("Config")]
-    public class ConsoleConfiguration : IConfiguration
+    public class ConsoleConfiguration
     {
         /// <summary>
         /// The database connection string from the XML configuration.
