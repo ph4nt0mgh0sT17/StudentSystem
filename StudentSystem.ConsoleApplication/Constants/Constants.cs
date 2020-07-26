@@ -41,5 +41,13 @@ namespace StudentSystem.ConsoleApplication
             public const string StudentCreatedSuccessfully = "Student has been created successfully.";
         }
 
+        /// <summary>
+        /// The class that contains all messages for Logger...
+        /// </summary>
+        public static class LoggerMessages
+        {
+            public const string ApplicationStarted = "The application Student System has successfully started.";
+        }
+
     }
 }

@@ -32,6 +32,8 @@ namespace StudentSystem.ConsoleApplication
             DependencyInjectionProvider.BuildProvider();
             InitializeMemberFields();
 
+            mLogger.Info(Constants.LoggerMessages.ApplicationStarted);
+
             Console.WriteLine(Constants.Messages.IntroductionMessage);
             while (true)
             {
