@@ -5,8 +5,16 @@ using System.Text;
 
 namespace StudentSystem.Core
 {
+    /// <summary>
+    /// The basic helper class that offers the Format method for logging from <seealso cref="FileLogger"/>.
+    /// </summary>
     public static class FileLoggerFormat
     {
+        /// <summary>
+        /// Formats the object array and the <seealso cref="Exception"/> into Log Output string.
+        /// </summary>
+        /// <param name="state">The object array containing the needed elements.</param>
+        /// <param name="cause">The <seealso cref="Exception"/>.</param>
         public static string Format(object[] state, Exception cause)
         {
             string origin = (string) state[0];
@@ -21,7 +29,7 @@ namespace StudentSystem.Core
                 exceptionMessage = Environment.NewLine + cause;
             }
 
-            return $"{message} [{Path.GetFileName(filePath)} > {origin}() > Line {lineNumber}]{exceptionMessage}";
+            return $"[{Path.GetFileName(filePath)} > {origin}() > Line {lineNumber}] {message} {exceptionMessage}";
         }
     }
 }

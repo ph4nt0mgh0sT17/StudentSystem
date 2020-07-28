@@ -6,8 +6,22 @@ using Microsoft.Extensions.Logging;
 
 namespace StudentSystem.Core
 {
+    /// <summary>
+    /// The basic extension methods for the <seealso cref="FileLogger"/>.
+    /// </summary>
     public static class FileLoggerExtensions
     {
+        /// <summary>
+        /// Logs the information to the log file.
+        /// </summary>
+        /// <param name="logger">The logger that logs the message.</param>
+        /// <param name="message">The message to be logged</param>
+        /// <param name="eventId">The <seealso cref="EventId"/>. It's not really used in the method.</param>
+        /// <param name="exception">The <seealso cref="Exception"/> that is logged with the message.</param>
+        /// <param name="origin">The origin method from where the message is being logged.</param>
+        /// <param name="filePath">The class from where the message is being logged.</param>
+        /// <param name="lineNumber">The line number from where the message is being logged.</param>
+        /// <param name="args">The arguments.</param>
         public static void LogInformationSource(
             this ILogger logger,
             string message, 
@@ -21,23 +35,17 @@ namespace StudentSystem.Core
             logger?.Log(LogLevel.Information, eventId, args.Prepend(origin, filePath, lineNumber, message), exception, FileLoggerFormat.Format);
         }
 
-        public static T[] Prepend<T>(this T[] source, params T[] toAdd)
-        {
-            return toAdd.Append(source);
-        }
-
-        public static T[] Append<T>(this T[] source, params T[] toAdd)
-        {
-            return source.Concat(toAdd).ToArray();
-        }
-
+        /// <summary>
+        /// Add <seealso cref="FileLoggerProvider"/> with set path and the <seealso cref="FileLoggerConfiguration"/>.
+        /// </summary>
+        /// <param name="builder">The <seealso cref="ILoggingBuilder"/> that adds the <seealso cref="FileLoggerProvider"/>.</param>
+        /// <param name="path">The path of the log file.</param>
+        /// <param name="configuration">The configuration for the <seealso cref="FileLogger"/>.</param>
+        /// <returns></returns>
         public static ILoggingBuilder AddFile(this ILoggingBuilder builder, string path,
             FileLoggerConfiguration configuration = null)
         {
-            if (configuration == null)
-            {
-                configuration = new FileLoggerConfiguration();
-            }
+            configuration = configuration ?? new FileLoggerConfiguration();
 
             builder.AddProvider(new FileLoggerProvider(path, configuration));
 

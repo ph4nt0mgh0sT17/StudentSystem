@@ -24,6 +24,13 @@ namespace StudentSystem.ConsoleApplication
             set;
         }
 
+        [XmlElement("LogFilePathName")]
+        public string LogFilePathName
+        {
+            get;
+            set;
+        }
+
         public override string ToString()
         {
             return $"Console configuration:\n\tDatabaseConnection: {DatabaseConnection}";

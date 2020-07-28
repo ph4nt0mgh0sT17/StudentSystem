@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using Autofac;
 using Autofac.Core;
@@ -7,6 +8,7 @@ using log4net;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using StudentSystem.ConsoleApplication;
+using StudentSystem.ConsoleApplication.Configuration;
 using StudentSystem.DataServiceLayer;
 using StudentSystem.Core;
 
@@ -26,8 +28,17 @@ namespace StudentSystem.ConsoleApplication
         public static void BuildProvider()
         {
             DateTime nowDate = DateTime.Now;
+            ConsoleConfiguration configuration = ConfigurationFactory.CreateConsoleConfiguration();
+            string logPath = configuration.LogFilePathName;
+
+            string directory = Path.GetDirectoryName(logPath);
+            string logName = logPath.Split("/")[logPath.Split("/").Length - 1];
+
+
+
+
             Mikrite.Construct()
-                .AddFileLogger($"Logs/{DateTime.Now.ToString("yyyy-MM-dd")}_StudentSystem.txt")
+                .AddFileLogger($"{directory}/{DateTime.Now.ToString("yyyy-MM-dd")}_{logName}") // Should be implemented through XML files
                 .AddStudentSystemContext()
                 .Build();
         }
@@ -35,11 +46,11 @@ namespace StudentSystem.ConsoleApplication
         /// <summary>
         /// Retrieves the <seealso cref="StudentSystemContext"/> from the Mikrite DI provider.
         /// </summary>
-        public static StudentSystemContext StudentSystemContext => Mikrite.Service<StudentSystemContext>();
+        public static StudentSystemContext StudentSystemContext => Mikrite.RetrieveService<StudentSystemContext>();
 
         /// <summary>
         /// Retrieves the <seealso cref="ILogger"/> from the Mikrite DI provider.
         /// </summary>
-        public static ILogger Logger => Mikrite.Service<ILogger>();
+        public static ILogger Logger => Mikrite.RetrieveService<ILogger>();
     }
 }
