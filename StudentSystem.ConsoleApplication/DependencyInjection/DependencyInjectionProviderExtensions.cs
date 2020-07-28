@@ -25,15 +25,5 @@ namespace StudentSystem.ConsoleApplication
 
             return container;
         }
-
-        /// <summary>
-        /// Adds <seealso cref="Logger"/> into the <seealso cref="Mikrite"/> provider.
-        /// </summary>
-        /// <param name="container">The container that contains the <seealso cref="IServiceCollection"/>.</param>
-        public static MikriteContainer AddLogger(this MikriteContainer container)
-        {
-            container.Services.AddSingleton<ILogger, Logger>();
-            return container;
-        }
     }
 }

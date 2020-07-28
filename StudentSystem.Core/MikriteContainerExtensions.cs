@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Text;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace StudentSystem.Core
 {
@@ -30,6 +31,29 @@ namespace StudentSystem.Core
             where TDbContext : DbContext
         {
             container.Services.AddDbContext<TDbContext>(builder);
+            return container;
+        }
+
+
+        public static MikriteContainer AddFileLogger(this MikriteContainer container, string logPath = "log.txt")
+        {
+            container.Services.AddLogging(options =>
+            {
+                options.AddFile(logPath, new FileLoggerConfiguration {LogAtTop = true});
+            });
+
+            return container;
+        }
+
+        public static MikriteContainer AddDefaultLogger(this MikriteContainer container)
+        {
+            container.Services.AddLogging(options =>
+            {
+                options.SetMinimumLevel(LogLevel.Debug);
+            });
+
+            container.Services.AddTransient(provider => provider.GetService<ILoggerFactory>().CreateLogger("MikriteLogger"));
+
             return container;
         }
     }

@@ -36,6 +36,8 @@ namespace StudentSystem.Core
             {
                 Services = new ServiceCollection();
             }
+
+            this.AddDefaultLogger();
         }
 
         /// <summary>

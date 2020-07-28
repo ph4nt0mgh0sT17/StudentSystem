@@ -5,6 +5,7 @@ using Autofac;
 using Autofac.Core;
 using log4net;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using StudentSystem.ConsoleApplication;
 using StudentSystem.DataServiceLayer;
 using StudentSystem.Core;
@@ -24,9 +25,10 @@ namespace StudentSystem.ConsoleApplication
         /// </summary>
         public static void BuildProvider()
         {
+            DateTime nowDate = DateTime.Now;
             Mikrite.Construct()
+                .AddFileLogger($"Logs/{DateTime.Now.ToString("yyyy-MM-dd")}_StudentSystem.txt")
                 .AddStudentSystemContext()
-                .AddLogger()
                 .Build();
         }
 

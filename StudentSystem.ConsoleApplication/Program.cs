@@ -14,6 +14,7 @@ using log4net;
 using log4net.Config;
 using Microsoft.EntityFrameworkCore.Migrations.Operations;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using StudentSystem.Core;
 using StudentSystem.DataServiceLayer.Entities;
 
@@ -32,14 +33,14 @@ namespace StudentSystem.ConsoleApplication
             DependencyInjectionProvider.BuildProvider();
             InitializeMemberFields();
 
-            mLogger.Info(Constants.LoggerMessages.ApplicationStarted);
+            mLogger.LogInformationSource("Testing logger...");
 
-            Console.WriteLine(Constants.Messages.IntroductionMessage);
+            /*Console.WriteLine(Constants.Messages.IntroductionMessage);
             while (true)
             {
                 PrintMenu();
                 ChooseOptionFromMenu();
-            }
+            }*/
         }
 
         private static void InitializeMemberFields()
