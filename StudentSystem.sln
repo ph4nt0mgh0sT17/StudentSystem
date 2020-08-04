@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentSystem.DataServiceLa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentSystem.ConsoleApplication", "StudentSystem.ConsoleApplication\StudentSystem.ConsoleApplication.csproj", "{9F7AF543-93A8-417E-90DC-81C2EAB9EBCA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentSystem.Core", "StudentSystem.Core\StudentSystem.Core.csproj", "{CC81F556-B741-4475-8CCA-8089BC8E54BB}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{9F7AF543-93A8-417E-90DC-81C2EAB9EBCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F7AF543-93A8-417E-90DC-81C2EAB9EBCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F7AF543-93A8-417E-90DC-81C2EAB9EBCA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CC81F556-B741-4475-8CCA-8089BC8E54BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CC81F556-B741-4475-8CCA-8089BC8E54BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CC81F556-B741-4475-8CCA-8089BC8E54BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CC81F556-B741-4475-8CCA-8089BC8E54BB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

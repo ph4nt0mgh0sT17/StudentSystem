@@ -10,7 +10,9 @@ using Microsoft.Extensions.Logging;
 using StudentSystem.ConsoleApplication;
 using StudentSystem.ConsoleApplication.Configuration;
 using StudentSystem.DataServiceLayer;
-using StudentSystem.Core;
+using Mikrite.Core;
+using Mikrite.Core.DependencyInjection;
+using Mikrite.Core.Extensions;
 
 namespace StudentSystem.ConsoleApplication
 {
@@ -35,9 +37,7 @@ namespace StudentSystem.ConsoleApplication
             string logName = logPath.Split("/")[logPath.Split("/").Length - 1];
 
 
-
-
-            Mikrite.Construct()
+            MikriteProvider.Construct()
                 .AddFileLogger($"{directory}/{DateTime.Now.ToString("yyyy-MM-dd")}_{logName}") // Should be implemented through XML files
                 .AddStudentSystemContext()
                 .Build();
@@ -46,11 +46,11 @@ namespace StudentSystem.ConsoleApplication
         /// <summary>
         /// Retrieves the <seealso cref="StudentSystemContext"/> from the Mikrite DI provider.
         /// </summary>
-        public static StudentSystemContext StudentSystemContext => Mikrite.RetrieveService<StudentSystemContext>();
+        public static StudentSystemContext StudentSystemContext => MikriteProvider.RetrieveService<StudentSystemContext>();
 
         /// <summary>
         /// Retrieves the <seealso cref="ILogger"/> from the Mikrite DI provider.
         /// </summary>
-        public static ILogger Logger => Mikrite.RetrieveService<ILogger>();
+        public static ILogger Logger => MikriteProvider.RetrieveService<ILogger>();
     }
 }

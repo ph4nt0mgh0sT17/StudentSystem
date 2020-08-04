@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Mikrite.Core.DependencyInjection;
+using Mikrite.Core.Extensions;
 using StudentSystem.ConsoleApplication.Configuration;
-using StudentSystem.Core;
 using StudentSystem.DataServiceLayer;
 
 namespace StudentSystem.ConsoleApplication

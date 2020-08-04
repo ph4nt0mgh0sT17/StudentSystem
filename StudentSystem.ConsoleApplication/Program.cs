@@ -15,7 +15,7 @@ using log4net.Config;
 using Microsoft.EntityFrameworkCore.Migrations.Operations;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using StudentSystem.Core;
+using Mikrite.Core.Extensions;
 using StudentSystem.DataServiceLayer.Entities;
 
 namespace StudentSystem.ConsoleApplication
@@ -35,12 +35,12 @@ namespace StudentSystem.ConsoleApplication
 
             mLogger.LogInformationSource("Testing logger...");
 
-            /*Console.WriteLine(Constants.Messages.IntroductionMessage);
+            Console.WriteLine(Constants.Messages.IntroductionMessage);
             while (true)
             {
                 PrintMenu();
                 ChooseOptionFromMenu();
-            }*/
+            }
         }
 
         private static void InitializeMemberFields()
@@ -109,8 +109,10 @@ namespace StudentSystem.ConsoleApplication
             Console.WriteLine(Constants.Messages.RetrievingStudents + "\n");
             IUnitOfWork unitOfWork = new UnitOfWork(mStudentSystemContext);
 
-            List<StudentEntity> students = unitOfWork.Students.GetStudentsByUsername().ToList();
-            students.ForEach(student => Console.WriteLine(student.ToString()));
+            /*List<StudentEntity> students = unitOfWork.Students.GetStudentsByUsername().ToList();
+            students.ForEach(student => Console.WriteLine(student.ToString()));*/
+
+            unitOfWork.Students.GetAll();
 
             // Need to put an empty line to indent...
             Console.WriteLine();
