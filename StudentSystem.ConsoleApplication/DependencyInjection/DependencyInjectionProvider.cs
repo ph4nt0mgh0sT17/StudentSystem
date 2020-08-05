@@ -13,6 +13,7 @@ using StudentSystem.DataServiceLayer;
 using Mikrite.Core;
 using Mikrite.Core.DependencyInjection;
 using Mikrite.Core.Extensions;
+using StudentSystem.Core;
 
 namespace StudentSystem.ConsoleApplication
 {
@@ -29,16 +30,11 @@ namespace StudentSystem.ConsoleApplication
         /// </summary>
         public static void BuildProvider()
         {
-            DateTime nowDate = DateTime.Now;
-            ConsoleConfiguration configuration = ConfigurationFactory.CreateConsoleConfiguration();
-            string logPath = configuration.LogFilePathName;
 
-            string directory = Path.GetDirectoryName(logPath);
-            string logName = logPath.Split("/")[logPath.Split("/").Length - 1];
-
+            string logFilePathName = ConfigurationFactory.CreateConsoleConfiguration().LogFilePathName;
 
             MikriteProvider.Construct()
-                .AddFileLogger($"{directory}/{DateTime.Now.ToString("yyyy-MM-dd")}_{logName}") // Should be implemented through XML files
+                .AddFileLogger(DateTimeOffset.Now.GetStudentSystemLoggerPathName(logFilePathName)) // Should be implemented through XML files
                 .AddStudentSystemContext()
                 .Build();
         }
