@@ -29,7 +29,7 @@ services:
             - my-db:/var/lib/mysql
 
     api-server:
-        build: ./StudentSystem.API/
+        build: ./StudentSystem.WebAPI/
         container_name: api-server
         restart: on-failure
         environment:
