@@ -33,7 +33,7 @@ services:
         container_name: api-server
         restart: on-failure
         environment:
-            DB_CONNECTION_STRING: 'test'
+            DB_CONNECTION_STRING: 'Server=mysql_database;Port=3306;Database=student_system;Uid=root;Pwd=root_admin'
 
         networks:
             - dockerapi-dev
