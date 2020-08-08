@@ -17,7 +17,7 @@ namespace StudentSystem.DataServiceLayer
         /// </summary>
         public override IQueryable<StudentAddressEntity> GetAll()
         {
-            return base.GetAll().IncludeStudents();
+            return base.GetAll();
         }
 
         /// <summary>
