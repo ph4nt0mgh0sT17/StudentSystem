@@ -20,12 +20,19 @@ namespace StudentSystem.WebAPI.Controllers
             mStudentSystemContext = studentSystemContext;
         }
 
-        [HttpPost]
+        [HttpPost("add")]
         public void AddStudent(StudentEntity studentEntity)
         {
             UnitOfWork unitOfWork = new UnitOfWork(mStudentSystemContext);
             unitOfWork.Students.Add(studentEntity);
             unitOfWork.Complete();
+        }
+
+        [HttpGet("detail")]
+        public IEnumerable<StudentEntity> GetAllStudents()
+        {
+            UnitOfWork unitOfWork = new UnitOfWork(mStudentSystemContext);
+            return unitOfWork.Students.GetStudentsByUsername();
         }
     }
 }
