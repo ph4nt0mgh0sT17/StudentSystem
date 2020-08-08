@@ -27,6 +27,19 @@ services:
 
         volumes:
             - my-db:/var/lib/mysql
+
+    api-server:
+        build: ./StudentSystem.API/
+        container_name: api-server
+        restart: on-failure
+        environment:
+            DB_CONNECTION_STRING: 'test'
+
+        networks:
+            - dockerapi-dev
+
+        ports:
+            - "5003:80"
                 
 volumes:
     my-db:
