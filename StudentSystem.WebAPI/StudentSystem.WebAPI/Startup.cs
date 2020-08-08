@@ -29,7 +29,7 @@ namespace StudentSystem.WebAPI
         {
             services.AddControllers();
             services.AddDbContext<StudentSystemContext>(builder =>
-                builder.UseMySQL("Server=localhost;Port=3306;Database=student_system;Uid=root;Pwd=root_admin"));
+                builder.UseMySQL("Server=mysql_database;Port=3306;Database=student_system;Uid=root;Pwd=root_admin"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
