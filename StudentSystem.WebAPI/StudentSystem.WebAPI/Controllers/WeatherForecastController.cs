@@ -7,7 +7,7 @@ using Microsoft.Extensions.Logging;
 using StudentSystem.DataServiceLayer;
 using StudentSystem.DataServiceLayer.Entities;
 
-namespace StudentSystem.API.Controllers
+namespace StudentSystem.WebAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]

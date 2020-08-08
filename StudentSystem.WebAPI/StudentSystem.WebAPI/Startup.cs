@@ -13,7 +13,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using StudentSystem.DataServiceLayer;
 
-namespace StudentSystem.API
+namespace StudentSystem.WebAPI
 {
     public class Startup
     {
