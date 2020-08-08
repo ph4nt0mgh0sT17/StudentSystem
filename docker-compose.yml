@@ -39,7 +39,7 @@ services:
             - dockerapi-dev
 
         ports:
-            - "8080:5003"
+            - "5003:5003"
                 
 volumes:
     my-db:
