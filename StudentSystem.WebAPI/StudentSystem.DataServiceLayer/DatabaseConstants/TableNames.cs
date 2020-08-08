@@ -6,7 +6,7 @@ namespace StudentSystem.DataServiceLayer.DatabaseConstants
 {
     public static class TableNames
     {
-        public const string StudentTable = "STUDENT";
-        public const string StudentAddressTable = "STUDENT_ADDRESS";
+        public const string StudentTable = "student";
+        public const string StudentAddressTable = "student_address";
     }
 }
