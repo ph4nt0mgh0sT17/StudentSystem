@@ -20,7 +20,7 @@ namespace StudentSystem.WebAPI.Controllers
             mStudentSystemContext = studentSystemContext;
         }
 
-        [HttpPost("add")]
+        [HttpPost("/add")]
         public void AddStudent(StudentEntity studentEntity)
         {
             UnitOfWork unitOfWork = new UnitOfWork(mStudentSystemContext);
@@ -28,7 +28,7 @@ namespace StudentSystem.WebAPI.Controllers
             unitOfWork.Complete();
         }
 
-        [HttpGet("detail")]
+        [HttpGet("/detail")]
         public IEnumerable<StudentEntity> GetAllStudents()
         {
             UnitOfWork unitOfWork = new UnitOfWork(mStudentSystemContext);
