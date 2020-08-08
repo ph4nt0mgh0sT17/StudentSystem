@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
+using StudentSystem.DataServiceLayer.DatabaseConstants;
 
 namespace StudentSystem.DataServiceLayer.Entities
 {
     /// <summary>
     /// Entity that represents the StudentAddress table from the database.
     /// </summary>
-    [Table(Constants.TableNames.StudentAddressTable)]
+    [Table(TableNames.StudentAddressTable)]
     public class StudentAddressEntity
     {
-        [Column(Constants.ColumnNames.StudentAddressTable.Id)]
+        [Column(ColumnNames.StudentAddressTable.Id)]
         [Key]
         public int Id
         {
@@ -20,42 +21,42 @@ namespace StudentSystem.DataServiceLayer.Entities
             set;
         }
 
-        [Column(Constants.ColumnNames.StudentAddressTable.Address1)]
+        [Column(ColumnNames.StudentAddressTable.Address1)]
         public string Address1
         {
             get;
             set;
         }
 
-        [Column(Constants.ColumnNames.StudentAddressTable.Address2)]
+        [Column(ColumnNames.StudentAddressTable.Address2)]
         public string Address2
         {
             get;
             set;
         }
 
-        [Column(Constants.ColumnNames.StudentAddressTable.City)]
+        [Column(ColumnNames.StudentAddressTable.City)]
         public string City
         {
             get;
             set;
         }
 
-        [Column(Constants.ColumnNames.StudentAddressTable.Region)]
+        [Column(ColumnNames.StudentAddressTable.Region)]
         public string Region
         {
             get;
             set;
         }
 
-        [Column(Constants.ColumnNames.StudentAddressTable.Country)]
+        [Column(ColumnNames.StudentAddressTable.Country)]
         public string Country
         {
             get;
             set;
         }
 
-        [Column(Constants.ColumnNames.StudentAddressTable.PostalCode)]
+        [Column(ColumnNames.StudentAddressTable.PostalCode)]
         public string PostalCode
         {
             get;

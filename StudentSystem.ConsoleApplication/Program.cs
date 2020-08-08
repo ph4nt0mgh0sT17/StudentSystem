@@ -17,6 +17,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Mikrite.Core.Extensions;
 using StudentSystem.DataServiceLayer.Entities;
+using StudentSystem.Core.Constants;
+using StudentSystem.Core;
 
 namespace StudentSystem.ConsoleApplication
 {
@@ -35,7 +37,7 @@ namespace StudentSystem.ConsoleApplication
 
             mLogger.LogInformationSource("Testing logger...");
 
-            Console.WriteLine(Constants.Messages.IntroductionMessage);
+            Console.WriteLine(Messages.IntroductionMessage);
             while (true)
             {
                 PrintMenu();
@@ -62,7 +64,7 @@ namespace StudentSystem.ConsoleApplication
         /// </summary>
         private static void ChooseOptionFromMenu()
         {
-            Console.Write(Constants.Messages.AskForSelectionMenu);
+            Console.Write(Messages.AskForSelectionMenu);
             int.TryParse(Console.ReadKey().KeyChar.ToString(), out int selectedOption);
 
             Console.WriteLine("\n");
@@ -79,23 +81,23 @@ namespace StudentSystem.ConsoleApplication
 
             switch (selectedOption)
             {
-                case Constants.MenuOptions.WrongOption:
-                    Console.WriteLine(Constants.ErrorMessages.WrongSelectedOptionFromConsoleMenu);
+                case MenuOptions.WrongOption:
+                    Console.WriteLine(ErrorMessages.WrongSelectedOptionFromConsoleMenu);
                     break;
 
-                case Constants.MenuOptions.PrintAllStudents:
+                case MenuOptions.PrintAllStudents:
                     PrintAllStudents();
                     break;
 
-                case Constants.MenuOptions.AddStudent:
+                case MenuOptions.AddStudent:
                     AddStudent();
                     break;
 
-                case Constants.MenuOptions.RemoveStudent:
+                case MenuOptions.RemoveStudent:
                     // TODO: Remove student...
                     break;
 
-                case Constants.MenuOptions.UpdateStudent:
+                case MenuOptions.UpdateStudent:
                     // TODO update student
                     break;
             }
@@ -106,7 +108,7 @@ namespace StudentSystem.ConsoleApplication
         /// </summary>
         private static void PrintAllStudents()
         {
-            Console.WriteLine(Constants.Messages.RetrievingStudents + "\n");
+            Console.WriteLine(Messages.RetrievingStudents + "\n");
             IUnitOfWork unitOfWork = new UnitOfWork(mStudentSystemContext);
 
             /*List<StudentEntity> students = unitOfWork.Students.GetStudentsByUsername().ToList();
@@ -133,7 +135,7 @@ namespace StudentSystem.ConsoleApplication
             unitOfWork.Complete();
             
 
-            Console.WriteLine(Constants.Messages.StudentCreatedSuccessfully + "\n");
+            Console.WriteLine(Messages.StudentCreatedSuccessfully + "\n");
         }
 
         /// <summary>

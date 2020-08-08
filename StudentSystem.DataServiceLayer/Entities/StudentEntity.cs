@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
-using StudentSystem.DataServiceLayer.Entities;
+using StudentSystem.DataServiceLayer.DatabaseConstants;
 
-namespace StudentSystem.DataServiceLayer
+namespace StudentSystem.DataServiceLayer.Entities
 {
     /// <summary>
     /// The entity that represents the student table in the database.
     /// </summary>
-    [Table(Constants.TableNames.StudentTable)]
+    [Table(TableNames.StudentTable)]
     public class StudentEntity
     {
-        [Column(Constants.ColumnNames.StudentTable.Id)]
+        [Column(ColumnNames.StudentTable.Id)]
         [Key]
         public int Id
         {
@@ -21,28 +21,28 @@ namespace StudentSystem.DataServiceLayer
             set;
         }
 
-        [Column(Constants.ColumnNames.StudentTable.Username)]
+        [Column(ColumnNames.StudentTable.Username)]
         public string Username
         {
             get;
             set;
         }
 
-        [Column(Constants.ColumnNames.StudentTable.FirstName)]
+        [Column(ColumnNames.StudentTable.FirstName)]
         public string FirstName
         {
             get;
             set;
         }
 
-        [Column(Constants.ColumnNames.StudentTable.LastName)]
+        [Column(ColumnNames.StudentTable.LastName)]
         public string LastName
         {
             get;
             set;
         }
 
-        [Column(Constants.ColumnNames.StudentTable.BirthDate)]
+        [Column(ColumnNames.StudentTable.BirthDate)]
         public DateTime BirthDate
         {
             get;
@@ -50,7 +50,7 @@ namespace StudentSystem.DataServiceLayer
         }
 
         [ForeignKey("StudentAddress")]
-        [Column(Constants.ColumnNames.StudentTable.StudentAddressId)]
+        [Column(ColumnNames.StudentTable.StudentAddressId)]
         public int StudentAddressId
         {
             get;
