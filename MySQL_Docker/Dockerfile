@@ -2,5 +2,5 @@
 FROM mysql:8.0
 
 # Copies the db_structure.sql into db_scripts (overwrites the sql script if found the same script)
-COPY ../DB_Scripts/database_structure.sql /db_scripts/
+COPY ./database_structure.sql /db_scripts/
 
