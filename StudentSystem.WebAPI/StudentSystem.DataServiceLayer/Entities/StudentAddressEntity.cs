@@ -63,12 +63,6 @@ namespace StudentSystem.DataServiceLayer.Entities
             set;
         }
 
-        public ICollection<StudentEntity> SettledStudents
-        {
-            get;
-            set;
-        }
-
         public override string ToString()
         {
             return $"Address: {Address1}, {Address2}, {City}, {Region}, {Country}, {PostalCode}";
