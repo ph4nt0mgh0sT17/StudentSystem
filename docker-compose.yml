@@ -1,0 +1,32 @@
+version: '3.4'
+
+networks:
+    dockerapi-dev:
+        driver: bridge
+        
+
+services: 
+    mysql_database:
+        build: ./MySQL_Docker/
+        container_name: mysql_database
+        restart: always
+        environment: 
+            MYSQL_DATABASE: 'student_system'
+            MYSQL_USER: 'ss_admin'
+            MYSQL_PASSWORD: 'ss_admin'
+            MYSQL_ROOT_PASSWORD: 'root_admin'
+
+        networks: 
+            - dockerapi-dev
+        
+        ports:
+            - '3306:3306'
+
+        expose:
+            - '3306'
+
+        volumes:
+            - my-db:/var/lib/mysql
+                
+volumes:
+    my-db:
