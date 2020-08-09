@@ -24,6 +24,30 @@ namespace StudentSystem.WebAPI.Controllers
         public void AddStudent(StudentEntity studentEntity)
         {
             UnitOfWork unitOfWork = new UnitOfWork(mStudentSystemContext);
+
+            if (studentEntity.StudentAddress != null)
+            {
+                // Check if student address already exists
+                StudentAddressEntity address = unitOfWork.StudentAddresses.Find(studentAddress =>
+                    studentAddress.Id == studentEntity.StudentAddress.Id &&
+                    studentAddress.Address1 == studentEntity.StudentAddress.Address1 &&
+                    studentAddress.Address2 == studentEntity.StudentAddress.Address2 &&
+                    studentAddress.City == studentEntity.StudentAddress.City) as StudentAddressEntity;
+
+                if (address == null)
+                {
+                    unitOfWork.StudentAddresses.Add(new StudentAddressEntity
+                    {
+                        Address1 = studentEntity.StudentAddress.Address1,
+                        Address2 = studentEntity.StudentAddress.Address2,
+                        City = studentEntity.StudentAddress.City,
+                        Country = studentEntity.StudentAddress.Country,
+                        Region = studentEntity.StudentAddress.Region,
+                        PostalCode = studentEntity.StudentAddress.PostalCode
+                    });
+                }
+            }
+
             unitOfWork.Students.Add(studentEntity);
             unitOfWork.Complete();
         }

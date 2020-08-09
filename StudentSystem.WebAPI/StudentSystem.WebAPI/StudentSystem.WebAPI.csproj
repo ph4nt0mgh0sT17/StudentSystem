@@ -10,7 +10,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\StudentSystem.Core\StudentSystem.Core.csproj" />
-    <ProjectReference Include="..\StudentSystem.Core\StudentSystem.Core.csproj" />
     <ProjectReference Include="..\StudentSystem.DataServiceLayer\StudentSystem.DataServiceLayer.csproj" />
   </ItemGroup>
 
