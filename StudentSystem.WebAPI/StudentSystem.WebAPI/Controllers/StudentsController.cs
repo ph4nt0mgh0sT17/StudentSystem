@@ -4,12 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using StudentSystem.Core.Routes;
 using StudentSystem.DataServiceLayer;
 using StudentSystem.DataServiceLayer.Entities;
 
 namespace StudentSystem.WebAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route(ApiControllerRoutes.Students)]
     [ApiController]
     public class StudentsController : ControllerBase
     {
@@ -20,7 +21,7 @@ namespace StudentSystem.WebAPI.Controllers
             mStudentSystemContext = studentSystemContext;
         }
 
-        [HttpPost("add")]
+        [HttpPost(ApiRoutes.Students.AddStudent)]
         public void AddStudent(StudentEntity studentEntity)
         {
             UnitOfWork unitOfWork = new UnitOfWork(mStudentSystemContext);
@@ -29,7 +30,7 @@ namespace StudentSystem.WebAPI.Controllers
             unitOfWork.Complete();
         }
 
-        [HttpGet("detail")]
+        [HttpGet(ApiRoutes.Students.StudentsDetail)]
         public IEnumerable<StudentEntity> GetAllStudents()
         {
             UnitOfWork unitOfWork = new UnitOfWork(mStudentSystemContext);
