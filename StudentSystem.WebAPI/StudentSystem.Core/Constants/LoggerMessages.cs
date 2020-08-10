@@ -9,6 +9,9 @@ namespace StudentSystem.Core.Constants
     /// </summary>
     public static class LoggerMessages
     {
+        /// <summary>
+        /// Logs that the application has been started.
+        /// </summary>
         public const string ApplicationStarted = "The application Student System has successfully started.";
     }
 }

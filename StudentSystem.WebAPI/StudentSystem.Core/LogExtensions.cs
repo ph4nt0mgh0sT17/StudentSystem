@@ -10,6 +10,11 @@ namespace StudentSystem.Core
     /// </summary>
     public static class LogExtensions
     {
+        /// <summary>
+        /// Gets the logger name for StudentSystem application by the current date.
+        /// </summary>
+        /// <param name="currentDay">The current day.</param>
+        /// <param name="logPath">The name of path.</param>
         public static string GetStudentSystemLoggerPathName(this DateTimeOffset currentDay, string logPath)
         {
             string directory = Path.GetDirectoryName(logPath);
