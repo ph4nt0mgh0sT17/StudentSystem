@@ -6,7 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\StudentSystem.Core\StudentSystem.Core.csproj" />
+    <PackageReference Include="Mikrite.Core" Version="1.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\StudentSystem.Clients.Core\StudentSystem.Clients.Core.csproj" />
   </ItemGroup>
 
 </Project>

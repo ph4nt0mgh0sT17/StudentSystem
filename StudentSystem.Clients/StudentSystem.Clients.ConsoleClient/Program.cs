@@ -2,7 +2,7 @@
 
 namespace StudentSystem.Clients.ConsoleClient
 {
-    class Program
+    internal class Program
     {
         static void Main(string[] args)
         {
