@@ -42,12 +42,7 @@ namespace StudentSystem.WebAPI
                 builder.AddProvider(
                     new FileLoggerProvider(
                         DateTimeOffset.Now.GetStudentSystemLoggerPathName("Logs/StudentSystem.txt"), 
-                        new FileLoggerConfiguration
-                        {
-                            LogLevel = LogLevel.Debug,
-                            LogTime = false,
-                            OutputLogLevel = false
-                        }
+                        new FileLoggerConfiguration()
                     )
                 )
             );
