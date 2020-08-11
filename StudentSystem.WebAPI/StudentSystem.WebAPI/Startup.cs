@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Mikrite.Core.Logging;
+using StudentSystem.Core;
 using StudentSystem.DataServiceLayer;
 
 namespace StudentSystem.WebAPI
@@ -38,7 +39,18 @@ namespace StudentSystem.WebAPI
             services.AddTransient(provider => provider.GetService<ILoggerFactory>().CreateLogger("MikriteLogger"));
 
             services.AddLogging(builder =>
-                builder.AddProvider(new FileLoggerProvider("Logs/GG.txt", new FileLoggerConfiguration())));
+                builder.AddProvider(
+                    new FileLoggerProvider(
+                        DateTimeOffset.Now.GetStudentSystemLoggerPathName("Logs/StudentSystem.txt"), 
+                        new FileLoggerConfiguration
+                        {
+                            LogLevel = LogLevel.Debug,
+                            LogTime = false,
+                            OutputLogLevel = false
+                        }
+                    )
+                )
+            );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
