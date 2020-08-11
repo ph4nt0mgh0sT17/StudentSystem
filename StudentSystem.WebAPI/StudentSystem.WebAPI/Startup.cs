@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Mikrite.Core.Logging;
 using StudentSystem.DataServiceLayer;
 
 namespace StudentSystem.WebAPI
@@ -33,6 +34,11 @@ namespace StudentSystem.WebAPI
                     Environment.GetEnvironmentVariable("DB_CONNECTION_STRING") ?? 
                     "Server=mysql_database;Port=3306;Database=student_system;Uid=root;Pwd=root_admin")
                 );
+
+            services.AddTransient(provider => provider.GetService<ILoggerFactory>().CreateLogger("MikriteLogger"));
+
+            services.AddLogging(builder =>
+                builder.AddProvider(new FileLoggerProvider("Logs/GG.txt", new FileLoggerConfiguration())));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
