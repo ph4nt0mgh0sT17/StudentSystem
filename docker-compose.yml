@@ -40,6 +40,10 @@ services:
 
         ports:
             - "5003:80"
+
+        volumes:
+            - api-server-volume:/app
                 
 volumes:
     my-db:
+    api-server-volume:
