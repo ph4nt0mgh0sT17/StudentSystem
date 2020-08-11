@@ -23,6 +23,8 @@ namespace StudentSystem.Core.Routes
             /// The API route for obtaining the details of all students in the database.
             /// </summary>
             public const string StudentsDetail = "detail";
+
+            public const string DeleteStudent = "{studentId}";
         }
     }
 }
