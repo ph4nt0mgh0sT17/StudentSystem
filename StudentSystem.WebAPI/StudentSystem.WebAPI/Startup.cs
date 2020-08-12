@@ -30,6 +30,7 @@ namespace StudentSystem.WebAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddCors();
             services.AddDbContext<StudentSystemContext>(builder =>
                 builder.UseMySQL(
                     Environment.GetEnvironmentVariable("DB_CONNECTION_STRING") ?? 
