@@ -39,7 +39,7 @@ services:
             - dockerapi-dev
 
         ports:
-            - "5003:80"
+            - "5000:80"
 
         volumes:
             - api-server-volume:/app
