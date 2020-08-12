@@ -34,7 +34,6 @@ services:
         restart: on-failure
         environment:
             DB_CONNECTION_STRING: 'Server=mysql_database;Port=3306;Database=student_system;Uid=root;Pwd=root_admin'
-            ASPNETCORE_URLS: 'http://+:80;https://+:443'
 
         networks:
             - dockerapi-dev

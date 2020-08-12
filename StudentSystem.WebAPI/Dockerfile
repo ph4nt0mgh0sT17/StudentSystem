@@ -9,4 +9,9 @@ FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
 WORKDIR /app
 
 COPY --from=builder /app .
+
+ENV ASPNETCORE_ENVIRONMENT=Development
+ENV ASPNETCORE_URLS=http://+:80
 CMD dotnet StudentSystem.WebAPI.dll
+
+EXPOSE 80
