@@ -48,5 +48,18 @@ namespace StudentSystem.WebAPI.Controllers
             UnitOfWork unitOfWork = new UnitOfWork(mStudentSystemContext);
             return unitOfWork.Students.GetStudentsByUsername();
         }
+
+        /// <summary>
+        /// Deletes the student.
+        /// </summary>
+        /// <param name="studentId"></param>
+        [Route(ApiRoutes.Students.DeleteStudent)]
+        [HttpDelete]
+        public void DeleteStudent(int studentId)
+        {
+            IUnitOfWork unitOfWork = new UnitOfWork(mStudentSystemContext);
+            StudentEntity studentToRemove = unitOfWork.Students.GetById(studentId);
+            unitOfWork.Students.Remove(studentToRemove);
+        }
     }
 }
