@@ -60,7 +60,7 @@ namespace StudentSystem.WebAPI
 
             app.UseHttpsRedirection();
 
-            app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+            app.UseCors();
 
             app.UseRouting();
 

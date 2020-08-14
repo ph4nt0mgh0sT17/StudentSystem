@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -54,6 +55,7 @@ namespace StudentSystem.WebAPI.Controllers
         /// </summary>
         /// <param name="studentId"></param>
         [Route(ApiRoutes.Students.DeleteStudent)]
+        [DisableCors]
         [HttpDelete]
         public IActionResult DeleteStudent(int studentId)
         {
